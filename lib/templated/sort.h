@@ -8,15 +8,16 @@
 /**
  * @brief sorts any collection<T> between \p start and \p end
  *
- *
  * @tparam RandomIt Iterator over a collection<T>
- * @tparam T The Datatype of the collection to be sorted
+ * @tparam F the functor over two T returning a bool
  * @param start RandomAccessIterator at the start of the section to be sorted
  * @param end RandomAccessIterator at the end of the section to be sorted
- * @param le a function pointer or lambda for a less than comparison between two T, defaults to a<b
+ * @param le a functor for a less than comparison between two T, defaults to std::less
  */
-template <typename T, typename RandomIt>
-void sort_it(RandomIt start, RandomIt end, std::function<bool(const T&, const T&)> le = [](const T& a, const T& b){return a<b;}) {
+template <typename RandomIt, typename F >
+void sort_it(RandomIt start, RandomIt end, F le = std::less<decltype(*std::declval<RandomIt>())>{}) {
+    // Assert that F is a callable function returning a bool with two parameter
+    static_assert(std::is_invocable_r_v<bool, F, decltype(*start), decltype(*start)>, "Callable must compare two elements of the range and returns a boolean");
 
     for (RandomIt head = start; head != end; ++head)
     {
