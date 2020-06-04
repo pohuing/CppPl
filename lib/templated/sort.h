@@ -6,7 +6,7 @@
 #include <iterator>
 
 /**
- * @brief sorts any collection<T> between \p start and \p end
+ * @brief sorts any collection<T> between start and end
  *
  * @tparam RandomIt Iterator over a collection<T>
  * @tparam F the functor over two T returning a bool
