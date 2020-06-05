@@ -1,23 +1,6 @@
-#include <cmath>
 #include <iostream>
 #include "IComparable.h"
-
-class Point : public IComparable{
-public:
-    Point(int x, int y) : m_x(x), m_y(y){}
-    double get_dist() const{
-        return sqrt(m_x * m_x + m_y * m_y);
-    }
-    bool operator<(const IComparable& other) const override {
-        return get_dist() < dynamic_cast<const Point&>(other).get_dist();
-    }
-    bool operator>(const IComparable& other) const override {
-        return get_dist() > dynamic_cast<const Point&>(other).get_dist();
-    }
-
-private:
-    int m_x, m_y;
-};
+#include "Point.h"
 
 
 int main(){
