@@ -14,15 +14,9 @@ public:
 
 
 // A collection for IComparables, owns data through a std::unique_ptr
-class ComparableCollection{
+class ComparableCollection : public std::vector<std::unique_ptr<IComparable>> {
 public:
     // Sorts the collection in place
     void sort();
-    void push_back(std::unique_ptr<IComparable> value);
-    // Returns a reference to the data vector
-    std::vector<std::unique_ptr<IComparable>>& get_data_ref();
-
-private:
-    std::vector<std::unique_ptr<IComparable>> m_data;
 };
 #endif //CPPPL_ICOMPARABLE_H

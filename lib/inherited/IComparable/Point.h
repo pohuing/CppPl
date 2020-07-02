@@ -15,6 +15,8 @@ public:
     double get_dist() const;
     bool operator<(const IComparable& other) const override;
     bool operator>(const IComparable& other) const override;
+    int get_x();
+    int get_y();
 
 private:
     int m_x, m_y;

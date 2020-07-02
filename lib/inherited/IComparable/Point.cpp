@@ -12,3 +12,11 @@ bool Point::operator<(const IComparable& other) const{
 bool Point::operator>(const IComparable& other) const {
     return get_dist() > dynamic_cast<const Point&>(other).get_dist();
 }
+
+int Point::get_x(){
+    return m_x;
+}
+
+int Point::get_y(){
+    return m_y;
+}
