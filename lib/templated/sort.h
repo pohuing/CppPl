@@ -4,6 +4,7 @@
 #include <vector>
 #include <functional>
 #include <iterator>
+#include <type_traits>
 
 /**
  * @brief sorts any collection<T> between start and end
