@@ -91,6 +91,8 @@ void launch_app() {
             case 'i':
                 inherited_interface();
                 break;
+            case 'q':
+                return;
             default:
                 break;
         }
