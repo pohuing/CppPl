@@ -19,7 +19,7 @@ sort_it(data.begin(), data.end(),
 ```
 
 ### Inherited
-ComparableCollection erbt von std::vector<std::unique_ptr<IComparable>> um einfache Datenzugriffe zu erlauben. IComparable erfordert operator< und operator>.
+ComparableCollection erbt von std::vector\<std::unique_ptr\<IComparable\>\> um einfache Datenzugriffe zu erlauben. IComparable erfordert operator< und operator>.
 ```c++
 #include "lib/inherited/IComparable/Point.h"
 
