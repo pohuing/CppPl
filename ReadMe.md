@@ -19,7 +19,17 @@ sort_it(data.begin(), data.end(),
 ```
 
 ### Inherited
+ComparableCollection erbt von std::vector<std::unique_ptr<IComparable>> um einfache Datenzugriffe zu erlauben. IComparable erfordert operator< und operator>.
+```c++
+#include "lib/inherited/IComparable/Point.h"
 
+
+auto collection = ComparableCollection();
+collection.push_back(std::make_unique<Point>(1,1));
+collection.push_back(std::make_unique<Point>(0,0));
+
+collection.sort();
+```
 ## Vorteile Nachteile Vererbung vs Templates
 # Templates
 Mit Templates lassen sich zu Kompilierzeit ges
