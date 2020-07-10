@@ -2,7 +2,7 @@ objects = $(srcDir)main.o $(libDir)inherited/IComparable/IComparable.o $(libDir)
 headers = $(libDir)templated/sort.h
 libDir = lib/
 CXX = c++.exe
-main : CXXFLAGS += -std=c++17 -m64
+main : CXXFLAGS += -std=c++17
 main : $(objects)
 	$(CXX) $(CXXFLAGS) -o main.exe $(objects)
 release : $(objects)

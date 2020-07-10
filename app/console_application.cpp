@@ -43,10 +43,9 @@ void templated_interface() {
 }
 
 void inherited_interface(){
-    std::string command, param1, param2;
-    auto collection = ComparableCollection();
-    std::vector<std::unique_ptr<IComparable>>& data = collection.get_data_ref();
-    //auto data_r = collection.get_data_ref();
+    std::string command;
+    int param1, param2;
+    ComparableCollection data;
     std::cout << "This interface works by simple commands which enter submenues for entering parameters: " << std::endl;
     std::cout << "\t add params: x y adds a new Point at x and y. Ex.: add <Enter> 5 10\n"
                  "\t remove x y removes all Points with coordinates x,y\n"
@@ -55,19 +54,23 @@ void inherited_interface(){
                  "\t quit exits to the preceding menu" << std::endl;
     while (command != "q") {
         std::cout << "{";
-        for(std::unique_ptr<IComparable>& point : data)
-            std::cout << " (" << ((Point*)(point.get()))->get_x() << " " << ((Point*)(point.get()))->get_y() << ")";
+        for(auto &point : data){
+            auto p = (Point*)point.get();
+            std::cout << " (" << p->get_x() << " " << p->get_y() << ")";
+        }
         std::cout << " }" << std::endl;
         std::cin >> command;
         if (command == "add") {
             std::cin >> param1 >> param2;
-            data.emplace_back(std::make_unique<Point>(stoi(param1), stoi(param2)));
+            data.push_back(std::make_unique<Point>(param1, param2));
         } else if (command == "remove") {
             std::cin >> param1 >> param2;
-            auto to_be_removed = std::make_unique<Point>(stoi(param1), stoi(param2));
-            data.erase(std::remove(data.begin(), data.end(), to_be_removed), data.end());
+            data.erase(std::remove_if(data.begin(), data.end(), [=](auto& point){
+                auto p = (Point*)point.get();
+                return p->get_x() == param1 && p->get_y() == param2;
+            }), data.end());
         }else if(command == "sort"){
-            collection.sort();
+            data.sort();
         } else if (command == "clear"){
             data.clear();
         }else if(command == "quit"){
