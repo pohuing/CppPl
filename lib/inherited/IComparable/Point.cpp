@@ -5,6 +5,10 @@ double Point::get_dist() const {
     return sqrt(m_x * m_x + m_y * m_y);
 };
 
+std::string Point::to_string() const {
+    return "(" + std::to_string(m_x) + " " + std::to_string(m_y) + ")";
+}
+
 bool Point::operator<(const IComparable& other) const{
     return get_dist() < dynamic_cast<const Point&>(other).get_dist();
 }
