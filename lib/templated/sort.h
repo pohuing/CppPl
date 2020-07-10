@@ -15,8 +15,8 @@
  * @param end RandomAccessIterator at the end of the section to be sorted
  * @param le a functor for a less than comparison between two T, defaults to std::less
  */
-template <typename RandomIt, typename F >
-void sort_it(RandomIt start, RandomIt end, F le = std::less<decltype(*std::declval<RandomIt>())>{}) {
+template <typename RandomIt, typename F = std::less<>>
+void sort_it(RandomIt start, RandomIt end, F le = F()) {
     // Assert that F is a callable function returning a bool with two parameter
     static_assert(std::is_invocable_r_v<bool, F, decltype(*start), decltype(*start)>, "Callable must compare two elements of the range and returns a boolean");
 
