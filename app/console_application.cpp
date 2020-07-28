@@ -14,7 +14,7 @@ void templated_interface() {
     std::cout << "\t add params: x y adds a new Point at x and y. Ex.: add <Enter> 5 10\n"
                  "\t remove x y removes all Points with coordinates x,y\n"
                  "\t sort sorts all points\n"
-                 "\t clear clears the current list of points"
+                 "\t clear clears the current list of points\n"
                  "\t quit exits to the preceding menu" << std::endl;
     while (command != "q") {
         std::cout << "{";
@@ -51,7 +51,7 @@ void inherited_interface(){
                  "\t remove x y removes all Points with coordinates x,y\n"
                  "\t sort sorts all points\n"
                  "\t clear clears the current list of points"
-                 "\t quit exits to the preceding menu" << std::endl;
+                 "\t quit exits to the preceding menu\n" << std::endl;
     while (command != "q") {
         std::cout << "{";
         for(auto &point : data){

@@ -53,6 +53,7 @@ int main(){
         inherited.push_back(a.first);
         templated.push_back(a.second);
     }
+    // Sort results
     sort_it(templated.begin(), templated.end());
     sort_it(inherited.begin(), inherited.end());
     std::cout << "Fastest five runs:\nTemplated \t| Inherited\n";
